@@ -1,4 +1,14 @@
 build:
+  box: maven
+  steps:
+    - script:
+        name: Run maven
+        code: |
+          rm -r target
+          mvn install
+          cp -r target $WERCKER_OUTPUT_DIR
+
+buildimage:
   box: docker
   docker: true
   steps:
